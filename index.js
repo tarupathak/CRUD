@@ -12,4 +12,11 @@ app.post("/create", async (req, resp) => {
   resp.send(result);
 });
 
+app.get("/list", async (req,resp) => {
+    let data = await Product.find();
+    resp.send(data);
+})
+
+
+
 app.listen(3000);
