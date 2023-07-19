@@ -12,16 +12,23 @@ app.post("/create", async (req, resp) => {
   resp.send(result);
 });
 
-app.get("/list", async (req,resp) => {
-    let data = await Product.find();
-    resp.send(data);
-})
+app.get("/list", async (req, resp) => {
+  let data = await Product.find();
+  resp.send(data);
+});
 
-app.delete("/delete/:id", async (req,resp) => {
-    console.log(req.params)
-    let data = await Product.deleteOne(req.params);
-    resp.send(data);
-})
+app.delete("/delete/:id", async (req, resp) => {
+  console.log(req.params);
+  let data = await Product.deleteOne(req.params);
+  resp.send(data);
+});
 
+app.put("/update/:id", async (req, resp) => {
+  console.log(req.params);
+  let data = await Product.updateOne(req.params, {
+    $set: req.body,
+  });
+  resp.send(data);
+});
 
 app.listen(3000);
